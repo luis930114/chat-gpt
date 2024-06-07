@@ -33,7 +33,7 @@ const App = () => {
         const response = await fetch('http://localhost:8000/completions', options)
         const data = await response.json()
         console.log(response, data)
-        //setMessage(data.choices[0].message)
+        setMessage(data.choices[0].message)
     } catch (error) {
         console.error(error)
     }
@@ -41,6 +41,7 @@ const App = () => {
   }
 
 useEffect(() =>{
+  console.log(currentTitle, value, message)
   if(!currentTitle && value && message){
     setCurrentTitle(value)
   }
@@ -59,7 +60,7 @@ useEffect(() =>{
         }]
     ))
   }
-}, [message, currentTitle])
+}, [message, currentTitle, value])
 
 console.log(previousChats)
 const currentChat = previousChats.filter(previousChats => previousChats.title === currentTitle)
