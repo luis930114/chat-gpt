@@ -68,3 +68,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### docker
+En esta sección se muestra como se corre la aplicación de acuerdo con docker:
+  _ Para crear los contenedores necesarios para que corra la aplicación se pone el comando docker-compose up --build
+  _ Si solo quiere correr la aplicación docker-compose up y con la combinación de teclas Ctrl + c detiene el servicio de docker
