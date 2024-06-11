@@ -41,6 +41,7 @@ const App = () => {
   }
 
 useEffect(() =>{
+  // para evaluar el titulo actual
   console.log(currentTitle, value, message)
   if(!currentTitle && value && message){
     setCurrentTitle(value)
