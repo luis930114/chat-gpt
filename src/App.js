@@ -28,11 +28,11 @@ const App = () => {
         "Content-Type": "application/json"
       }
     }
-    try{
-      
-        const response = await fetch('http://localhost:8000/completions', options)
+    try{  
+        const url = 'chat-gpt-zeta-smoky-85.vercel.app:8000/completions'  // 'http://localhost:8000/completions'  
+        const response = await fetch(url, options)
         const data = await response.json()
-        console.log(response, data)
+        setValue(""); // Limpiar el campo de entrada después de la búsqueda
         setMessage(data.choices[0].message)
     } catch (error) {
         console.error(error)
@@ -42,7 +42,6 @@ const App = () => {
 
 useEffect(() =>{
   // para evaluar el titulo actual
-  console.log(currentTitle, value, message)
   if(!currentTitle && value && message){
     setCurrentTitle(value)
   }
@@ -63,7 +62,6 @@ useEffect(() =>{
   }
 }, [message, currentTitle, value])
 
-console.log(previousChats)
 const currentChat = previousChats.filter(previousChats => previousChats.title === currentTitle)
 const uniquetitles = Array.from(new Set(previousChats.map(previousChats => previousChats.title)))
 
