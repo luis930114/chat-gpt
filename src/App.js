@@ -17,7 +17,7 @@ const App = () => {
     setValue("")
   }
 
-  const getMessages = async () =>{
+ /* const getMessages = async () =>{
     
     const options = {
       method: "POST",
@@ -38,7 +38,29 @@ const App = () => {
         console.error(error)
     }
 
-  }
+  }*/
+
+    const getMessages = async () => {
+      const options = {
+        method: "POST",  // Asegúrate de que esto es POST
+        body: JSON.stringify({ message: value }),
+        headers: { "Content-Type": "application/json" }
+      };
+    
+      const url = `${process.env.REACT_APP_API_URL}/completions`;
+    
+      try {
+        const response = await fetch(url, options);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setValue(""); // Limpiar el campo de entrada después de la búsqueda
+        setMessage(data.choices[0].message);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
 useEffect(() =>{
   // para evaluar el titulo actual
