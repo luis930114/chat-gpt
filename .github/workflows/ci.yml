@@ -29,3 +29,12 @@ jobs:
 
     - name: Build project
       run: npm run build
+
+    - name: Deploy to Vercel
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        API_KEY: ${{ secrets.API_KEY }}
+        REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+      run: |
+        npm install -g vercel
+        vercel --prod --token $VERCEL_TOKEN --env API_KEY=$API_KEY --env REACT_APP_API_URL=$REACT_APP_API_URL
