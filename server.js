@@ -4,7 +4,9 @@ const cors = require('cors')
 require('dotenv').config()
 const app = express()
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: 'https://chat-gpt-zeta-smoky-85.vercel.app'
+}))
 
 
 const API_KEY = process.env.API_KEY
