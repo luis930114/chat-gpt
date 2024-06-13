@@ -29,7 +29,7 @@ const App = () => {
       }
     }
     try{  
-        const url = '/completions'  // 'http://localhost:8000/completions'   https://chat-gpt-zeta-smoky-85.vercel.app:8000
+        const url = `${process.env.REACT_APP_API_URL}/completions`;  // 'http://localhost:8000/completions'   https://chat-gpt-zeta-smoky-85.vercel.app:8000
         const response = await fetch(url, options)
         const data = await response.json()
         setValue(""); // Limpiar el campo de entrada después de la búsqueda
