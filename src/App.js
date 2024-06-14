@@ -17,7 +17,7 @@ const App = () => {
     setValue("")
   }
 
- /* const getMessages = async () =>{
+  const getMessages = async () =>{
     
     const options = {
       method: "POST",
@@ -29,38 +29,36 @@ const App = () => {
       }
     }
     try{  
-        const url = `${process.env.REACT_APP_API_URL}/completions`;  // 'http://localhost:8000/completions'   https://chat-gpt-zeta-smoky-85.vercel.app:8000
-        const response = await fetch(url, options)
-        const data = await response.json()
-        setValue(""); // Limpiar el campo de entrada después de la búsqueda
-        setMessage(data.choices[0].message)
+  
+      const url = 'http://localhost:5000/api/completions'; //    https://chat-gpt-zeta-smoky-85.vercel.app:8000 `${process.env.REACT_APP_API_URL}/completions`;
+      const response = await fetch(url, options)
+      const data = await response.json()
+      setMessage(data.choices[0].message)
     } catch (error) {
         console.error(error)
     }
 
-  }*/
+  }
 
-    const getMessages = async () => {
+    /*const getMessages = async () => {
+      console.log("esto es getMessages")
       const options = {
-        method: "POST",  // Asegúrate de que esto es POST
+        method: "POST",
         body: JSON.stringify({ message: value }),
         headers: { "Content-Type": "application/json" }
       };
     
-      const url = `${process.env.REACT_APP_API_URL}/completions`;
-    
+      const url = 'http://localhost:8000/completions'; //`${process.env.REACT_APP_API_URL}/completions`;
+      console.log(url)
       try {
         const response = await fetch(url, options);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
         const data = await response.json();
         setValue(""); // Limpiar el campo de entrada después de la búsqueda
         setMessage(data.choices[0].message);
       } catch (error) {
         console.error(error);
       }
-    };
+    };*/
 
 useEffect(() =>{
   // para evaluar el titulo actual
