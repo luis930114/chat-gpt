@@ -36,7 +36,7 @@ app.post('/api/completions', async (req, res) =>{
 } )
 app.listen(PORT, '0.0.0.0',() => console.log('Your server is running on PORT ' + PORT))*/
 
-const PORT = 5000; //8000 5000 8001(funciona en local)
+/*const PORT = 5000; //8000 5000 8001(funciona en local)
 const express = require('express');
 const os = require('os');
 const cors = require('cors');
@@ -48,7 +48,7 @@ app.use(express.json());
     origin: 'https://chat-gpt-zeta-smoky-85.vercel.app'
 }));*/
 
-const networkInterfaces = os.networkInterfaces();
+/*const networkInterfaces = os.networkInterfaces();
 const ipAddresses = [];
 
 // Obtener todas las interfaces de red y sus direcciones IPv4
@@ -151,3 +151,31 @@ app.post('api/completions', async (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () => console.log('Your server is running on PORT ' + PORT));*/
+
+const fetch = require('node-fetch'); // Asegúrate de instalar node-fetch
+
+module.exports = async (req, res) => {
+    const API_KEY = process.env.API_KEY; // Usar variables de entorno de Vercel
+    const options = {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${API_KEY}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [{ role: "user", content: req.body.message }],
+            max_tokens: 100,
+        })
+    };
+
+    try {
+        const response = await fetch('https://api.openai.com/v1/chat/completions', options);
+        const data = await response.json();
+        res.status(200).json(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error en la solicitud de completación');
+    }
+};
+

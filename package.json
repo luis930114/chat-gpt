@@ -8,6 +8,7 @@
     "dockerode": "^4.0.2",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "node-fetch": "^3.3.2",
     "nodemon": "^3.1.3",
     "ollama": "^0.5.1",
     "react-scripts": "5.0.1",
