@@ -33,6 +33,7 @@ const App = () => {
       const url = 'https://chat-gpt-zeta-smoky-85.vercel.app/api/completions' //'http://localhost:5000/api/completions'; //    https://chat-gpt-zeta-smoky-85.vercel.app:8000 `${process.env.REACT_APP_API_URL}/completions`;
       const response = await fetch(url, options)
       const data = await response.json()
+      console.log(data);
       setMessage(data.choices[0].message)
     } catch (error) {
         console.error(error)
